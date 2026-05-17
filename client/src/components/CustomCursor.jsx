@@ -4,8 +4,17 @@ import { motion } from 'framer-motion';
 const CustomCursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
+  const [enabled, setEnabled] = useState(() => (
+    typeof window !== 'undefined' && window.matchMedia('(pointer: fine)').matches
+  ));
 
   useEffect(() => {
+    const finePointer = window.matchMedia('(pointer: fine)');
+
+    const handlePointerChange = (event) => {
+      setEnabled(event.matches);
+    };
+
     const updateMousePosition = (e) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
@@ -25,12 +34,18 @@ const CustomCursor = () => {
 
     window.addEventListener('mousemove', updateMousePosition);
     window.addEventListener('mouseover', handleMouseOver);
+    finePointer.addEventListener('change', handlePointerChange);
 
     return () => {
       window.removeEventListener('mousemove', updateMousePosition);
       window.removeEventListener('mouseover', handleMouseOver);
+      finePointer.removeEventListener('change', handlePointerChange);
     };
   }, []);
+
+  if (!enabled) {
+    return null;
+  }
 
   return (
     <>

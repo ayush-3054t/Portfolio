@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import emailjs from '@emailjs/browser';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Send, Mail, MapPin, Loader2, CheckCircle2, XCircle } from 'lucide-react';
@@ -55,18 +55,18 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-24 bg-[#030014] relative overflow-hidden">
-            <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-green-600/10 rounded-full blur-[150px] pointer-events-none -translate-y-1/2" />
-            <div className="absolute top-1/2 right-0 w-[500px] h-[500px] bg-emerald-600/10 rounded-full blur-[150px] pointer-events-none -translate-y-1/2" />
+        <section id="contact" className="py-16 md:py-24 bg-[#030014] relative overflow-hidden">
+            <div className="absolute top-1/2 left-0 w-72 h-72 md:w-[500px] md:h-[500px] bg-green-600/10 rounded-full blur-[110px] md:blur-[150px] pointer-events-none -translate-y-1/2" />
+            <div className="absolute top-1/2 right-0 w-72 h-72 md:w-[500px] md:h-[500px] bg-emerald-600/10 rounded-full blur-[110px] md:blur-[150px] pointer-events-none -translate-y-1/2" />
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-                <div className="text-center mb-20">
+            <div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-8 relative z-10">
+                <div className="text-center mb-12 md:mb-20">
                     <motion.h2
                         initial={{ opacity: 0, y: -20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
-                        className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-lime-400 inline-block mb-4"
+                        className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-lime-400 inline-block mb-4"
                     >
                         Let's Connect
                     </motion.h2>
@@ -79,7 +79,7 @@ const Contact = () => {
                     />
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12">
 
                     {/* Contact Info */}
                     <motion.div
@@ -87,33 +87,33 @@ const Contact = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="glass p-10 rounded-3xl border border-white/10"
+                        className="glass p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border border-white/10"
                     >
-                        <h3 className="text-3xl font-bold text-white mb-6">Get in Touch</h3>
-                        <p className="text-slate-400 mb-10 leading-relaxed text-lg">
+                        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">Get in Touch</h3>
+                        <p className="text-slate-400 mb-8 sm:mb-10 leading-relaxed text-base sm:text-lg">
                             I'm currently looking for new opportunities. Whether you have a question or just want to say hi, I'll try my best to get back to you!
                         </p>
 
-                        <div className="space-y-8">
-                            <div className="flex items-center gap-6 group">
-                                <div className="w-14 h-14 bg-green-500/10 rounded-2xl flex items-center justify-center text-green-400 group-hover:bg-green-500 group-hover:text-white transition-all duration-300 shadow-lg transform group-hover:scale-110 group-hover:rotate-6">
-                                    <Mail size={26} />
+                        <div className="space-y-6 sm:space-y-8">
+                            <div className="flex items-center gap-4 sm:gap-6 group">
+                                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-green-500/10 rounded-2xl flex flex-shrink-0 items-center justify-center text-green-400 group-hover:bg-green-500 group-hover:text-white transition-all duration-300 shadow-lg transform group-hover:scale-110 group-hover:rotate-6">
+                                    <Mail size={24} />
                                 </div>
-                                <div>
+                                <div className="min-w-0">
                                     <h4 className="text-sm text-slate-500 font-medium mb-1">Email</h4>
-                                    <a href="mailto:ayushtiwari2034@gmail.com" className="text-lg font-medium text-slate-200 hover:text-green-400 transition-colors">
+                                    <a href="mailto:ayushtiwari2034@gmail.com" className="text-base sm:text-lg font-medium text-slate-200 hover:text-green-400 transition-colors break-all">
                                         ayushtiwari2034@gmail.com
                                     </a>
                                 </div>
                             </div>
 
-                            <div className="flex items-center gap-6 group">
-                                <div className="w-14 h-14 bg-emerald-500/10 rounded-2xl flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-lg transform group-hover:scale-110 group-hover:-rotate-6">
-                                    <MapPin size={26} />
+                            <div className="flex items-center gap-4 sm:gap-6 group">
+                                <div className="w-12 h-12 sm:w-14 sm:h-14 bg-emerald-500/10 rounded-2xl flex flex-shrink-0 items-center justify-center text-emerald-400 group-hover:bg-emerald-500 group-hover:text-white transition-all duration-300 shadow-lg transform group-hover:scale-110 group-hover:-rotate-6">
+                                    <MapPin size={24} />
                                 </div>
                                 <div>
                                     <h4 className="text-sm text-slate-500 font-medium mb-1">Location</h4>
-                                    <p className="text-lg font-medium text-slate-200">
+                                    <p className="text-base sm:text-lg font-medium text-slate-200">
                                         Ghaziabad, India
                                     </p>
                                 </div>
@@ -127,10 +127,10 @@ const Contact = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="glass p-10 rounded-3xl border border-white/10 relative overflow-hidden"
+                        className="glass p-6 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border border-white/10 relative overflow-hidden"
                     >
                         <form onSubmit={sendEmail} className="space-y-6 relative z-10">
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
                                 <div>
                                     <label htmlFor="user_name" className="block text-sm font-medium text-slate-400 mb-2">Name</label>
                                     <input
